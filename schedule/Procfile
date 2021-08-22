@@ -1,1 +1,0 @@
-web: python schedule.py
