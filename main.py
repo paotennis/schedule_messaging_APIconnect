@@ -110,7 +110,7 @@ def handle_message(event):
       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
       return
     
-    make_message = convert_calendar(messages,calendars[0])
+    make_message = convert_calendar(messages,list(calendars)[0])
 
     json_data = json.dumps(make_message)
     response = requests.post("https://timetreeapis.com/calendars/" + calendars[0] + "/events",headers=headers, data=json_data)
@@ -165,9 +165,9 @@ def handle_message(event):
         URL = 'https://timetreeapis.com/calendars/'+calendar+'/upcoming_events?timezone=Asia/Tokyo&days=' + str(daycount)
         r = requests.get(URL, headers=headers)
         data = r.json()
-        for event in data['data']:
-          start=event['attributes']['start_at']
-          end=event['attributes']['end_at']
+        for eve in data['data']:
+          start=eve['attributes']['start_at']
+          end=eve['attributes']['end_at']
           
           # change format
           start_date,start_time = start.split("T")
