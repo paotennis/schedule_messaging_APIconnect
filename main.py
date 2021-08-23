@@ -25,6 +25,8 @@ TIME_TREE_ACCESS_TOKEN = os.environ["TIME_TREE_ACCESS_TOKEN"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+timezone = 9
+
 def convert_calendar(messages, calendar):
     start_date = messages[1]
     start_time = messages[2]
