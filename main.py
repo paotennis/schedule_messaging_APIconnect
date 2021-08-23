@@ -83,53 +83,53 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
   messages = event.message.text.split()
-  if "make" in messages[0]:
-    if len(messages) != 6:
-      reply = "Command: Not Found\nPlease input 'help'"
-      line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
-      return
+#   if "make" in messages[0]:
+#     if len(messages) != 6:
+#       reply = "Command: Not Found\nPlease input 'help'"
+#       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
+#       return
 
-    # header
-    headers = {
-    'Accept': 'application/vnd.timetree.v1+json',
-    'Authorization': 'Bearer ' + TIME_TREE_ACCESS_TOKEN
-    }
+#     # header
+#     headers = {
+#     'Accept': 'application/vnd.timetree.v1+json',
+#     'Authorization': 'Bearer ' + TIME_TREE_ACCESS_TOKEN
+#     }
 
-    URL = 'https://timetreeapis.com/calendars'
+#     URL = 'https://timetreeapis.com/calendars'
     
-    #get json
-    r = requests.get(URL, headers=headers)
-    data = r.json()
-    today = json.dumps(data, indent=4, ensure_ascii=False)
+#     #get json
+#     r = requests.get(URL, headers=headers)
+#     data = r.json()
+#     today = json.dumps(data, indent=4, ensure_ascii=False)
     
-    #get calendar id
-    p = r'"id": "(.*?)[,"]'
-    r = re.findall(p, today)
-    calendars=set(r)
+#     #get calendar id
+#     p = r'"id": "(.*?)[,"]'
+#     r = re.findall(p, today)
+#     calendars=set(r)
 
-    if len(messages[1].split('/')) != 3 or len(messages[2].split(':')) != 2 or len(messages[3].split('/')) != 3 or len(messages[4].split(':')) != 2:
-      reply = "Command: Not Found\nPlease input 'help'"
-      line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
-      return
+#     if len(messages[1].split('/')) != 3 or len(messages[2].split(':')) != 2 or len(messages[3].split('/')) != 3 or len(messages[4].split(':')) != 2:
+#       reply = "Command: Not Found\nPlease input 'help'"
+#       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
+#       return
     
-    make_message = convert_calendar(messages,list(calendars)[0])
+#     make_message = convert_calendar(messages,list(calendars)[0])
 
-    json_data = json.dumps(make_message)
-    print(json_data)
-    response = requests.post("https://timetreeapis.com/calendars/" + list(calendars)[0] + "/events",headers=headers, data=json_data)
-    print(response)
+#     json_data = json.dumps(make_message)
+#     print(json_data)
+#     response = requests.post("https://timetreeapis.com/calendars/" + list(calendars)[0] + "/events",headers=headers, data=json_data)
+#     print(response)
 
-    if response.status_code == 201:
-        reply = "Success"
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
-        return
-    else:
-        reply = "Failed. Please retry."
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
-        return
+#     if response.status_code == 201:
+#         reply = "Success"
+#         line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
+#         return
+#     else:
+#         reply = "Failed. Please retry."
+#         line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
+#         return
     
 
-  elif "see" in messages[0]:
+  if "see" in messages[0]:
     if len(messages) != 2:
       reply = "Command: Not Found\nPlease input 'help'"
       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
@@ -194,7 +194,7 @@ def handle_message(event):
       return
 
   elif "help" in messages[0]:
-    reply = "makeコマンド:予定作成コマンド\n"+"Usage:\nmake\nYYYY/MM/DD hh:mm\nYYYY/MM/DD hh/mm\nname\n\n"
+#     reply = "makeコマンド:予定作成コマンド\n"+"Usage:\nmake\nYYYY/MM/DD hh:mm\nYYYY/MM/DD hh/mm\nname\n\n"
     reply = reply + "seeコマンド:予定閲覧コマンド\ndaycount(<7)日後までの予定を閲覧できます。\n"+"Usage:\nsee (daycount)"
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
     return
