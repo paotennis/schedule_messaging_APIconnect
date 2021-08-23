@@ -103,7 +103,7 @@ def handle_message(event):
     r = re.findall(p, today)
     calendars=set(r)
 
-    if len(messages[1].split('/')) != or len(messages[2].split(':')) != 2 or len(messages[3].split('/')) != or len(messages[4].split(':')) != 2:
+    if len(messages[1].split('/')) != 3 or len(messages[2].split(':')) != 2 or len(messages[3].split('/')) != 3 or len(messages[4].split(':')) != 2:
       reply = "Command: Not Found\nPlease input 'help'"
       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
       return
