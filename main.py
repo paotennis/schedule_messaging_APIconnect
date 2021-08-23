@@ -113,7 +113,7 @@ def handle_message(event):
     make_message = convert_calendar(messages,list(calendars)[0])
 
     json_data = json.dumps(make_message)
-    response = requests.post("https://timetreeapis.com/calendars/" + calendars[0] + "/events",headers=headers, data=json_data)
+    response = requests.post("https://timetreeapis.com/calendars/" + list(calendars)[0] + "/events",headers=headers, data=json_data)
 
     if response.status_code == 201:
         reply = "Success"
