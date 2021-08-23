@@ -155,7 +155,7 @@ def handle_message(event):
       r = re.findall(p, today)
       calendars=set(r)
       
-      messages = daycount + "日後までのスケジュールです。\n"
+      messages = str(daycount) + "日後までのスケジュールです。\n"
       daycount += 1
         
       #get schedule
