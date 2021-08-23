@@ -42,8 +42,8 @@ def convert_calendar(messages, calendar):
     timetree_dict = {
         "data": {
             "attributes": {
-                "title": plan_name,
                 "category": "schedule",
+                "title": plan_name,
                 "all_day": False,
                 "start_at": start_year + "-" + start_month + "-" + start_day + "T" + start_hour + ":" + start_min + ":00.000Z",
                 "start_timezone": "UTC",
