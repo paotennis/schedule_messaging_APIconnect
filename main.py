@@ -46,7 +46,9 @@ def convert_calendar(messages, calendar):
                 "category": "schedule",
                 "all_day": False,
                 "start_at": start_year + "-" + start_month + "-" + start_day + "T" + start_hour + ":" + start_min + ":00.000Z",
-                "end_at": end_year + "-" + end_month + "-" + end_day + "T" + end_hour + ":" + end_min + ":00.000Z"
+                "start_timezone": "UTC",
+                "end_at": end_year + "-" + end_month + "-" + end_day + "T" + end_hour + ":" + end_min + ":00.000Z",
+                "end_timezone": "UTC"
             },
             "relationships": {
                 "label": {
