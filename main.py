@@ -51,7 +51,7 @@ def convert_calendar(messages, calendar):
             "relationships": {
                 "label": {
                     "data": {
-                        "id": f"{calendar_id},1",
+                        "id": f"{calendar},1",
                         "type": "label"
                     }
                 }
@@ -180,7 +180,7 @@ def handle_message(event):
           s_hour = int(start_hour) + timezone
           e_hour = int(end_hour) + timezone
 
-          message = start_month + "/" + start_day + " "+ str(s_hour) + ":" + start_min + "～" + end_month + "/" + end_day + " "+ str(e_hour) + ":" + end_min + "\n" + event['attributes']['title'] + "\n"
+          message = start_month + "/" + start_day + " "+ str(s_hour) + ":" + start_min + "～" + end_month + "/" + end_day + " "+ str(e_hour) + ":" + end_min + "\n" + eve['attributes']['title'] + "\n"
           reply += message
       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
       return
