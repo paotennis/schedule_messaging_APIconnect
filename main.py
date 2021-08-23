@@ -37,7 +37,7 @@ def convert_calendar(messages, calendar):
     end_year,end_month,end_day = end_date.split('/')
     end_hour,end_min = end_time.split(':')
 
-  timetree_dict = {
+    timetree_dict = {
         "data": {
             "attributes": {
                 "title": plan_name,
