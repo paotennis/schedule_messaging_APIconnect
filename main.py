@@ -182,7 +182,7 @@ def handle_message(event):
 
           message = start_month + "/" + start_day + " "+ str(s_hour) + ":" + start_min + "～" + end_month + "/" + end_day + " "+ str(e_hour) + ":" + end_min + "\n" + event['attributes']['title'] + "\n"
           reply += message
-      line_bot_api.push_message(event.reply_token,TextSendMessage(text=reply))
+      line_bot_api.reply_message(event.reply_token,TextSendMessage(text=reply))
     else:
       reply = "Please input: 0 < daycount < 7"
       line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
