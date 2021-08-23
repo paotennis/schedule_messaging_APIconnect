@@ -194,6 +194,7 @@ def handle_message(event):
       return
 
   elif "help" in messages[0]:
+    reply = "botのコマンド一覧です。\n"
 #     reply = "makeコマンド:予定作成コマンド\n"+"Usage:\nmake\nYYYY/MM/DD hh:mm\nYYYY/MM/DD hh/mm\nname\n\n"
     reply = reply + "seeコマンド:予定閲覧コマンド\ndaycount(<7)日後までの予定を閲覧できます。\n"+"Usage:\nsee (daycount)"
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply))
